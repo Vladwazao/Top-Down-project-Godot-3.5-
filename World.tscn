@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/GrassBackground.png" type="Texture" id=3]
+[ext_resource path="res://Player/SwordHitbox.gd" type="Script" id=8]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Camera2D.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Coin.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/CoinUI.tscn" type="PackedScene" id=16]
+[ext_resource path="res://UI/CoinManager.gd" type="Script" id=17]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=50]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 213, 208 )
+
+[node name="AnimationTree" parent="Player" index="4"]
+parameters/playback = SubResource( 50 )
+
+[node name="HitboxPivot" parent="Player" index="5"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SwordHitbox" parent="Player/HitboxPivot" index="0"]
+script = ExtResource( 8 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 160, 88 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 864, 464 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 213, 208 )
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2( -120, -72 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2( 376, 248 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 9 )]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 68.0
+margin_bottom = 19.0
+
+[node name="CoinManager" type="Node2D" parent="."]
+script = ExtResource( 17 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CoinManager"]
+
+[node name="CoinUI" parent="CoinManager/CanvasLayer" instance=ExtResource( 16 )]
+
+[node name="Coin" parent="CoinManager" instance=ExtResource( 15 )]
+position = Vector2( 244, 207 )
+
+[node name="Coin2" parent="CoinManager" instance=ExtResource( 15 )]
+position = Vector2( 274, 200 )
+
+[node name="Coin3" parent="CoinManager" instance=ExtResource( 15 )]
+position = Vector2( 299, 213 )
+
+[connection signal="body_entered" from="CoinManager/Coin" to="CoinManager" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="CoinManager/Coin2" to="CoinManager" method="_on_Coin2_body_entered"]
+[connection signal="body_entered" from="CoinManager/Coin3" to="CoinManager" method="_on_Coin3_body_entered"]
+
+[editable path="Player"]
+[editable path="Player/HitboxPivot/SwordHitbox"]
+[editable path="Player/HurtBox"]
+[editable path="Camera2D"]

@@ -1,0 +1,181 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Roboto-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Options.gd" type="Script" id=2]
+[ext_resource path="res://Music and Sounds/MenuSelect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Music and Sounds/MenuMusic.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.490196 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.686275 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0.392157 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 0.686275 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0, 0, 0.490196 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 0.392157 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Options" type="Node2D"]
+script = ExtResource( 2 )
+menu = "res://Menu.tscn"
+
+[node name="UI" type="CenterContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0.0941176, 0.105882, 0.164706, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+custom_constants/margin_right = 30
+custom_constants/margin_top = 20
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 290.0
+margin_bottom = 160.0
+custom_constants/separation = 10
+
+[node name="TitleName" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 260.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
+margin_left = 20.0
+margin_right = 240.0
+margin_bottom = 28.0
+size_flags_vertical = 1
+min_value = -30.0
+max_value = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 260.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+margin_left = 20.0
+margin_right = 240.0
+margin_bottom = 28.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 5 )
+text = "Back"
+icon_align = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 260.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3"]
+margin_left = 20.0
+margin_right = 240.0
+margin_bottom = 28.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
+text = "Exit"
+icon_align = 1
+
+[node name="MenuSelect" parent="." instance=ExtResource( 4 )]
+
+[node name="MenuMusic" parent="." instance=ExtResource( 5 )]
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/BackButton" to="." method="_on_BackButton_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/BackButton" to="." method="_on_PlayButton_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/BackButton" to="." method="_on_BackButton_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/BackButton" to="." method="_on_PlayButton_button_up"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/Exit" to="." method="_on_Exit_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/Exit" to="." method="_on_Exit_button_up"]
+[connection signal="finished" from="MenuMusic" to="." method="_on_MenuMusic_finished"]
