@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Roboto-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/CoinUI.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="CoinUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 207.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = -164.0
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1.0
+margin_right = 93.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Coins:"
+valign = 1
